@@ -1,0 +1,123 @@
+bruteforce 
+class Solution {
+public:
+    bool ispossible(vector<int>& weights, int days,int mid)
+    {
+        int actualdays=1;
+        int actualwt=0;
+        for(auto& ele:weights)
+        {
+           if(ele+actualwt <=mid)
+           {
+              actualwt += ele;
+           }
+           else
+           {
+             actualwt=ele;
+             actualdays++;
+           }
+        }
+        return actualdays<=days;
+    }
+    int shipWithinDays(vector<int>& weights, int days) 
+    {
+        int maxele=INT_MIN;
+        int sumele=0;
+        for(auto& ele:weights)
+        {
+            maxele=max(maxele,ele);
+            sumele +=ele;
+        }
+
+        int l=maxele,r=sumele;
+
+        for(int i=maxele;i<=sumele;i++)
+        {
+           if(ispossible(weights,days,i))
+           {
+             return i;
+           }
+        }
+        return -1;
+    }
+};
+
+time:
+finding the maxele and sumele : o(n)
+for loop to get ans : o(sumele-maxele)
+ispossible o(n)
+
+Brute Force
+
+Time Complexity:
+- Finding max weight and total weight = O(n)
+- Try every capacity from maxWeight to sumWeight = O(sumWeight)
+- For each capacity, check feasibility by traversing all packages = O(n)
+
+Overall:
+O(n × sum(weights))
+
+Space Complexity:
+O(1)
+
+
+class Solution {
+public:
+    bool ispossible(vector<int>& weights, int days,int mid)
+    {
+        int actualdays=1;
+        int actualwt=0;
+        for(auto& ele:weights)
+        {
+           if(ele+actualwt <=mid)
+           {
+              actualwt += ele;
+           }
+           else
+           {
+             actualwt=ele;
+             actualdays++;
+           }
+        }
+        return actualdays<=days;
+    }
+    int shipWithinDays(vector<int>& weights, int days) 
+    {
+        int maxele=INT_MIN;
+        int sumele=0;
+        for(auto& ele:weights)
+        {
+            maxele=max(maxele,ele);
+            sumele +=ele;
+        }
+
+        int l=maxele,r=sumele;
+
+        while(l<r)
+        {
+           int mid=(r-l)/2+l;
+
+           if(ispossible(weights,days,mid))
+           {
+             r=mid;
+           }
+           else
+           {
+             l=mid+1;
+           }
+        }
+        return l;
+    }
+};
+
+Time Complexity:
+
+- Finding max weight and total weight = O(n)
+- Binary search over capacity range [maxWeight, sumWeight] = O(log(sum(weights)))
+- Each feasibility check = O(n)
+
+Overall:
+O(n log(sum(weights)))
+
+Space Complexity:
+O(1)
