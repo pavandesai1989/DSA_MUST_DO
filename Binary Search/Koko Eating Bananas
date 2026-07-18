@@ -1,0 +1,121 @@
+Brute force: time limit exceed 
+
+class Solution {
+public:
+    bool ispossible(vector<int>& piles, int h,int mid)
+    {
+        long long acthrs=0;
+        for(auto& ele:piles)
+        {
+            acthrs += ele/mid;
+
+            if(ele%mid !=0) acthrs++;
+        }
+
+        return acthrs <= h;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) 
+    {
+        int n=piles.size();
+        int maxele=INT_MIN;
+        int minele=1;
+        int ans=INT_MAX;
+        for(auto& ele:piles)
+        {
+            maxele=max(maxele,ele);
+        }
+        int l=1,r=maxele;
+
+        for(int i=1;i<=r;i++)
+        {
+            if(ispossible(piles,h,i))
+            {
+                 return i;
+            }
+        }
+        return -1;
+    }
+};
+
+Time Complexity
+
+Let:
+
+n = number of piles
+M = maximum pile size (maxPile)
+Finding maxele:
+O(n)
+Loop from 1 to maxPile:
+O(M)
+Each call to ispossible():
+Traverses all piles
+O(n)
+
+Overall:
+
+O(n)+O(M×n)=
+O(n×M)
+	​
+
+
+where M=maxPile.
+
+
+Optimal:
+
+class Solution {
+public:
+    bool ispossible(vector<int>& piles, int h,int mid)
+    {
+        int acthrs=0;
+        for(auto& ele:piles)
+        {
+            acthrs += ele/mid;
+
+            if(ele%mid !=0) acthrs++;
+        }
+
+        return acthrs <= h;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) 
+    {
+        int n=piles.size();
+        int maxele=INT_MIN;
+        int minele=1;
+        for(auto& ele:piles)
+        {
+            maxele=max(maxele,ele);
+        }
+        int l=1,r=maxele;
+
+        while(l<r)
+        {
+            int mid=(r-l)/2+l;
+
+            if(ispossible(piles,h,mid))
+            {
+                r=mid;
+            }
+            else
+            {
+                l=mid+1;
+            }
+        }
+        return l;
+    }
+};
+
+Time Complexity
+
+Let:
+
+n = number of piles
+M = maximum number of bananas in a pile (maxPile)
+Finding maxele:
+O(n)
+Binary Search:
+Search space is [1, maxPile]
+Number of iterations = O(log M)
+ispossible():
+Traverses all piles once
+O(n)
