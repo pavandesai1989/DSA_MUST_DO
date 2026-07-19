@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) 
+    {
+        vector<vector<string>> res;
+
+        unordered_map<string,vector<string>> mpp;
+        for(auto& ele: strs) //o(n)
+        {
+            string tmp=ele;
+            sort(tmp.begin(),tmp.end()); //0(k) 
+            mpp[tmp].push_back(ele);
+        }
+
+        for(auto& [ele,vec]:mpp) //0(uniq)
+        {
+            res.push_back(vec);
+        }
+        return res;
+    }
+};
+
+Time Complexity:
+- For each string:
+  - Copy = O(k)
+  - Sort = O(k log k)
+  - Hash map insertion = O(1)
+
+Overall:
+O(n × k log k)
+
+where:
+n = number of strings
+k = average length of each string
+
+Space Complexity:
+O(n × k)
