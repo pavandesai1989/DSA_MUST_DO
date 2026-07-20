@@ -1,0 +1,80 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) 
+    {
+        unordered_set<ListNode*> sett;
+
+        ListNode* curr=head;
+        while(curr!=nullptr)
+        {
+            if(sett.find(curr)!=sett.end()) return true;
+            sett.insert(curr);
+            curr=curr->next;
+        }
+        return false;
+    }
+};
+
+Time Complexity:
+O(n)
+
+- Traverse the linked list once.
+- unordered_set lookup and insertion are O(1) on average.
+
+Overall:
+O(n)
+
+Space Complexity:
+O(n)
+
+- In the worst case, all nodes are stored in the unordered_set.
+
+***optimal****
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) 
+    {
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while(slow && fast && fast->next!=nullptr)
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+
+            if(slow==fast) return true;
+        }
+        return false;
+    }
+};
+
+Time Complexity:
+O(n)
+
+- Slow pointer moves one step at a time.
+- Fast pointer moves two steps at a time.
+- Each node is visited at most a constant number of times.
+
+Overall:
+O(n)
+
+Space Complexity:
+O(1)
+
+- Only two pointers (slow and fast) are used.
