@@ -63,3 +63,16 @@ public:
     }
 };
 
+
+Time Complexity:
+
+- Building set = O(n log n)
+- Traverse set = O(n)
+- Each find() = O(log n)
+
+Overall:
+O(n log n)
+
+Space Complexity:
+O(n)
+
