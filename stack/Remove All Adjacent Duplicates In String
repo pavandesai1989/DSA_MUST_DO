@@ -1,0 +1,53 @@
+class Solution {
+public:
+    string removeDuplicates(string s) 
+    {
+        stack<char> st;
+        for(auto& ele:s)
+        {
+            if(!st.empty() && st.top()==ele)
+            {
+                st.pop();
+            }
+            else
+            {
+                st.push(ele);
+            }
+        }
+
+        string res="";
+        while(!st.empty())
+        {
+            res += st.top();
+            st.pop();
+        }
+        reverse(res.begin(),res.end());
+        return res;
+    }
+};
+
+Complexity
+Time: O(n)
+Space: O(n)
+
+Instead of stack use string only 
+
+class Solution {
+public:
+    string removeDuplicates(string s) 
+    {
+        string res;
+        for(auto& ele:s)
+        {
+            if(!res.empty() && res.back()==ele)
+            {
+                res.pop_back();
+            }
+            else
+            {
+                res.push_back(ele);
+            }
+        }
+        return res;
+    }
+};
