@@ -1,0 +1,49 @@
+class Solution {
+public:
+    void helper(int idx,vector<int>& nums,vector<int> ds,vector<vector<int>>& res)
+    {
+      if(idx<0)
+      {
+        res.push_back(ds);
+        return;
+      }
+
+      //pick case
+      ds.push_back(nums[idx]);
+      helper(idx-1,nums,ds,res);
+      //backtrack
+      ds.pop_back();
+
+      //remove duplicates 
+      while(idx>0 && nums[idx]==nums[idx-1]) 
+      {
+        idx--;
+      }
+
+      //not pick 
+      helper(idx-1,nums,ds,res);
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) 
+    {
+        vector<vector<int>> res;
+        sort(nums.begin(),nums.end());
+        vector<int> ds;
+        helper(nums.size()-1,nums,ds,res);
+        return res;
+    }
+};
+
+Time Complexity: O(n × 2ⁿ)
+
+- Sorting the array takes O(n log n).
+- Each element has two choices (Pick / Not Pick), generating up to 2ⁿ recursive calls.
+- Copying each subset into the result takes O(n).
+- Therefore, total time = O(n × 2ⁿ). (The O(n log n) sorting is dominated.)
+
+Space Complexity:
+
+Auxiliary Space: O(n)
+- Maximum recursion depth is n.
+
+Including Output: O(n × 2ⁿ)
+- The result stores up to 2ⁿ subsets, each of size up to n.
