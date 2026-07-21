@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) 
+    {
+        if(stones.size()==1) return stones[0];
+        priority_queue<int> maxheap;
+        for(auto& ele:stones)
+        {
+            maxheap.push(ele);
+        }
+
+        while(maxheap.size()>1)
+        {
+            int y=maxheap.top();maxheap.pop();
+            int x=maxheap.top();maxheap.pop();
+
+            if(y!=x)
+            {
+                maxheap.push(y-x);
+            }
+        }
+
+        return maxheap.empty() ? 0 :maxheap.top();
+    }
+};
+
+Time Complexity: O(n log n)
+
+- Building the max-heap by inserting n stones takes O(n log n).
+- In the worst case, we perform (n - 1) smash operations.
+- Each smash involves:
+    • 2 pop operations → O(log n)
+    • 1 push operation (if needed) → O(log n)
+- Therefore, total time = O(n log n).
+
+Space Complexity: O(n)
+
+- The max-heap stores at most n stones.
