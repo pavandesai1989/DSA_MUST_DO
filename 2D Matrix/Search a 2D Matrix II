@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) 
+    {
+        int rows=matrix.size();
+        int cols=matrix[0].size();
+
+        int r=0,c=cols-1;
+
+        while(c>=0 && r<rows)
+        {
+            int ele = matrix[r][c];
+            if(ele == target) return true;
+
+            if(ele > target) c--;
+            else r++;
+        }
+        return false;
+    }
+};
+
+Complexity
+Time: O(rows + cols)
+Space: O(1)
+
+"This is the Staircase Search (or Search Space Elimination) approach. We start from the top-right 
+corner and eliminate either an entire row or an entire column at each step 
+based on the comparison with the target. It runs in O(rows + cols) time and O(1) space."
