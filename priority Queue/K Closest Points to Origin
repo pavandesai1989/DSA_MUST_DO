@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) 
+    {
+        vector<vector<int>> res;
+        priority_queue< pair < double,pair<int,int> > > maxheap;
+
+        for(auto& ele:points)
+        {
+            double sq = sqrt((ele[0]*ele[0])+(ele[1]*ele[1]));
+            maxheap.push({sq,{ele[0],ele[1]}});
+
+            if(maxheap.size()>k) maxheap.pop();
+        }
+
+        while(!maxheap.empty())
+        {
+            auto ele=maxheap.top();
+            maxheap.pop();
+            res.push_back({ele.second.first,ele.second.second});
+        }
+        return res;
+    }
+};
+
+Time Complexity: O(n log k)
+
+- Traverse all n points.
+- Each point is inserted into the max-heap.
+- Heap size is maintained at k.
+- Each push/pop operation takes O(log k).
+- Therefore, total time = O(n log k).
+
+Space Complexity: O(k)
+
+- The max-heap stores at most k points.
+- The result array stores k points.
