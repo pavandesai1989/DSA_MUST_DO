@@ -1,0 +1,42 @@
+class Solution {
+public:
+    void helper(int idx,vector<int>& nums,vector<int> ds,vector<vector<int>>& res)
+    {
+       //base case
+       if(idx<0)
+       {
+          res.push_back(ds);
+          return;
+       }
+
+       //not pick 
+       helper(idx-1,nums,ds,res);
+
+       //pick case
+       ds.push_back(nums[idx]);
+       helper(idx-1,nums,ds,res);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) 
+    {
+        vector<vector<int>> res;
+        vector<int> ds;
+
+        helper(nums.size()-1,nums,ds,res);
+        return res;
+    }
+};
+
+Time Complexity: O(n × 2ⁿ)
+
+- Each element has 2 choices (Pick / Not Pick).
+- Total subsets generated = 2ⁿ.
+- Copying each subset into the result takes O(n).
+- Therefore, total time = O(n × 2ⁿ).
+
+Space Complexity:
+
+Auxiliary Space: O(n)
+- Maximum recursion depth is n.
+
+Including Output: O(n × 2ⁿ)
+- There are 2ⁿ subsets, each can contain up to n elements.
