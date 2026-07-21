@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) 
+    {
+        priority_queue<int,vector<int>,greater<int>> minheap;
+        for(auto& ele:nums)
+        {
+            minheap.push(ele);
+            if(minheap.size()>k) minheap.pop();
+        }
+        return minheap.top();
+    }
+};
+
+Time Complexity: O(n log k)
+
+- Traverse all n elements.
+- Each insertion into the min-heap of size at most k takes O(log k).
+- If heap size exceeds k, one deletion is performed, which also takes O(log k).
+- Therefore, total time = O(n log k).
+
+Space Complexity: O(k)
+
+- The min-heap stores at most k elements.
