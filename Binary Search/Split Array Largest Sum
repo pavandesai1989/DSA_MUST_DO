@@ -1,0 +1,46 @@
+class Solution {
+public:
+    bool ispossible(vector<int>& nums, int k,int mid)
+    {
+        int numstu=1;
+        int numpages=0;
+        for(auto& ele:nums)
+        {
+            if(ele+numpages<=mid)
+            {
+                numpages+=ele;
+            }
+            else
+            {
+                numpages=ele;
+                numstu++;
+            }
+        }
+        return numstu<=k;
+    }
+    int splitArray(vector<int>& nums, int k) 
+    {
+        int l=INT_MIN;
+        int r=0;
+
+        for(auto& ele:nums)
+        {
+            l=max(l,ele);
+            r+=ele;
+        }
+
+        while(l<r)
+        {
+            int mid=(r-l)/2+l;
+            if(ispossible(nums,k,mid))
+            {
+                r=mid;
+            }
+            else
+            {
+                l=mid+1;
+            }
+        }
+        return l;
+    }
+};
