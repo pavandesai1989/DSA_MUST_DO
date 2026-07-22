@@ -1,0 +1,49 @@
+class Solution {
+public:
+
+    int helper(int idx, vector<int>& dp)
+    {
+        // Base case:
+        // If there are 0 or 1 stairs left,
+        // there is only ONE way to reach the top.
+        if(idx == 0 || idx == 1)
+            return 1;
+
+        // Return already computed answer.
+        if(dp[idx] != -1)
+            return dp[idx];
+
+        // Number of ways to reach current stair
+        // = ways from previous stair
+        // + ways from two stairs before.
+        return dp[idx] = helper(idx - 1, dp) + helper(idx - 2, dp);
+    }
+
+    int climbStairs(int n)
+    {
+        // Base cases:
+        // n = 0 -> do nothing (1 valid way)
+        // n = 1 -> one single step (1 way)
+        if(n == 0 || n == 1)
+            return 1;
+
+        // dp[i] stores number of ways to reach stair i.
+        // Size is n+1 because we need indices from 0 to n.
+        vector<int> dp(n + 1, -1);
+
+        // Start solving from the target stair 'n'.
+        // helper(n) computes the answer for the nth stair.
+        helper(n, dp);
+
+        // Answer is stored in dp[n].
+        return dp[n];
+    }
+};
+
+Complexity
+Time Complexity: O(n)
+Each state (0 to n) is computed only once due to memoization.
+Space Complexity: O(n)
+O(n) for the dp array.
+O(n) recursion call stack in the worst case.
+Overall auxiliary space: O(n).
