@@ -1,0 +1,65 @@
+https://leetcode.com/problems/3sum/description/
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) 
+    {
+        set<vector<int>> sett;
+        int n=nums.size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                for(int k=j+1;k<n;k++)
+                {
+                    if(nums[i]+nums[j]+nums[k]==0)
+                    {
+                        vector<int> temp({nums[i],nums[j],nums[k]});
+                        sort(temp.begin(),temp.end());
+                        sett.insert(temp);
+                    }
+                }
+            }
+        }
+
+        vector<vector<int>> res(sett.begin(),sett.end());
+        return res;
+    }
+};
+
+***
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) 
+    {
+        vector<vector<int>> res;
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+
+        for(int i=0;i<n;i++)
+        {
+            if(i>0 && nums[i]==nums[i-1]) continue;
+
+            int reqsum = -nums[i];
+            int l=i+1;
+            int r=n-1;
+
+            while(l<r)
+            {
+                int sum = nums[l]+nums[r];
+                if(sum==reqsum)
+                {
+                    res.push_back({nums[i],nums[l],nums[r]});
+                    while(l<r && nums[l]==nums[l+1]) l++;
+                    while(l<r && nums[r]==nums[r-1]) r--;
+
+                    l++;
+                    r--;
+                }
+                else if(sum>reqsum) r--;
+                else l++;
+            }
+        }
+        return res;
+    }
+};
