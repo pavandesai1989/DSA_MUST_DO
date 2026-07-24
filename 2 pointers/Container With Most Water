@@ -1,0 +1,42 @@
+***Brute force***
+class Solution {
+public:
+    int maxArea(vector<int>& height) 
+    {
+        int ans=INT_MIN;
+        int n=height.size();
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                int width = j-i;
+                int ht = min(height[i],height[j]);
+
+                ans = max(ans,ht*width);
+            }
+        }
+        return ans;
+    }
+};
+
+optimal:
+class Solution {
+public:
+    int maxArea(vector<int>& height) 
+    {
+        int n=height.size();
+        int l=0;
+        int r=n-1;
+        int maxarea = INT_MIN;
+
+        while(l<r)
+        {
+            maxarea = max(maxarea,min(height[l],height[r])*(r-l));
+
+            if(height[l]<height[r]) l++; //we may get less ht next and its deciding factor 
+            else r--;
+        }
+        return maxarea;
+    }
+};
