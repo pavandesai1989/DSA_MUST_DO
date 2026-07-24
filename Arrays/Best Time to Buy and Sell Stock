@@ -1,0 +1,38 @@
+**brute force 
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) 
+    {
+        int maxpro=INT_MIN;
+        int n=prices.size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(prices[j]<prices[i]) continue;
+                maxpro = max(maxpro,prices[j]-prices[i]);
+            }
+        }
+        return maxpro == INT_MIN ? 0 : maxpro;
+    }
+};
+
+
+
+**optimal***
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) 
+    {
+        int maxpro=0;
+        int n=prices.size();
+        int minval=prices[0];
+        for(int i=0;i<n;i++)
+        {
+             minval = min(minval,prices[i]);
+             maxpro = max(maxpro,prices[i]-minval);
+        }
+        return maxpro;
+    }
+};
+
