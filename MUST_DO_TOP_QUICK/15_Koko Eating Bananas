@@ -1,0 +1,99 @@
+https://leetcode.com/problems/koko-eating-bananas/description/ 
+
+class Solution {
+public:
+    bool ispossible(vector<int>& piles, int h,int i)
+    {
+         long long actualhrs=0;
+         for(auto& ele:piles)
+         {
+             actualhrs += ele/i;
+
+             if(ele%i!=0) actualhrs++;
+         }
+         return actualhrs <= h;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) 
+    {
+        int res=0;
+        int n=piles.size();
+        int mini=1;//vimp not mini 
+        int maxi=INT_MIN;
+
+        for(auto& ele:piles)
+        {
+            maxi = max(maxi,ele);
+        }
+
+        for(int i=mini;i<=maxi;i++)
+        {
+            if(ispossible(piles,h,i))
+            {
+                return i;
+            }
+        }
+        return -1;
+
+        
+    }
+};
+
+Brute Force
+
+Time  : O(n × maxPile)
+Space : O(1)
+
+where:
+n = number of piles
+maxPile = maximum bananas in any pile
+
+
+******
+class Solution {
+public:
+    bool ispossible(vector<int>& piles, int h,int i)
+    {
+         long long actualhrs=0;
+         for(auto& ele:piles)
+         {
+             actualhrs += ele/i;
+
+             if(ele%i!=0) actualhrs++;
+         }
+         return actualhrs <= h;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) 
+    {
+        int res=0;
+        int n=piles.size();
+        int mini=1;//vimp not mini 
+        int maxi=INT_MIN;
+        int l=0,r=n-1;
+
+        for(auto& ele:piles)
+        {
+            maxi = max(maxi,ele);
+            mini = min(mini,ele);
+        }
+        l=mini;r=maxi;//imp 
+
+        while(l<r)
+        {
+            int mid=(r-l)/2+l;
+
+            if(ispossible(piles,h,mid))
+            {
+                r=mid;
+            }
+            else
+            {
+                l=mid+1;
+            }
+        }
+
+        return l;
+    }
+};
+
+Time  : O(n log(maxPile))
+Space : O(1)
