@@ -1,0 +1,53 @@
+class Solution {
+public:
+    int characterReplacement(string s, int k) 
+    {
+        int n=s.size();
+        int maxlen=0;
+        for(int i=0;i<n;i++)
+        {
+            unordered_map<char,int> freq;
+            int maxfreq=0;
+            for(int j=i;j<n;j++)
+            {
+                freq[s[j]]++;
+                maxfreq = max(maxfreq,freq[s[j]]);
+                int len=j-i+1;
+
+                if(len-maxfreq > k) break;
+                maxlen = max(maxlen,len);
+            }
+        }
+        return maxlen;
+    }
+};
+
+***optimal***
+class Solution {
+public:
+    int characterReplacement(string s, int k) 
+    {
+        int n=s.size();
+        int maxlen=0;
+        int l=0,r=0;
+        int maxfreq=0;
+        unordered_map<char,int> freq;
+        while(r<n)
+        {
+           freq[s[r]]++;
+
+           maxfreq = max(maxfreq,freq[s[r]]);
+
+           while(r-l+1-maxfreq > k)
+           {
+              freq[s[l]]--;
+              l++;
+           }
+
+           maxlen=max(maxlen,r-l+1);
+
+           r++;
+        }
+        return maxlen;
+    }
+};
