@@ -1,0 +1,63 @@
+https://leetcode.com/problems/permutation-in-string/description/
+
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) 
+    {
+        int l1=s1.length();
+        int l2=s2.length();
+
+        unordered_map<char,int> m1;
+        for(auto& ele:s1) m1[ele]++;
+
+        for(int i=0;i<=l2-l1;i++)//vimp <=l2-l1
+        {
+            unordered_map<char,int> m2;
+            for(int j=i;j<i+l1;j++). //vvimp i+l1
+            {
+                m2[s2[j]]++;
+                if(m1 == m2) return true;
+            }
+        }
+        return false;
+    }
+};
+
+*****
+
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) 
+    {
+        int l1=s1.length();
+        int l2=s2.length();
+
+        unordered_map<char,int> m1;
+        for(auto& ele:s1) m1[ele]++;
+
+        unordered_map<char,int> m2;
+        int l=0,r=0;
+
+        while(r<l2)
+        {
+            m2[s2[r]]++;
+
+            while(r-l+1>l1)
+            {
+                m2[s2[l]]--;
+                if(m2[s2[l]]==0)
+                {
+                    m2.erase(s2[l]);
+                }
+                l++;
+            }
+
+            if(m1==m2) return true;
+            r++;
+        }
+        return false;
+
+        
+        return false;
+    }
+};
