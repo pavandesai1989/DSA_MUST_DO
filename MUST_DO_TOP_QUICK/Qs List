@@ -1,0 +1,123 @@
+=========================================================
+TOP 50 MUST-DO DSA QUESTIONS
+(OpenText / Philips / Siemens / Airbus / Product Companies)
+=========================================================
+
+==============================
+1. ARRAYS (8)
+==============================
+1.https://leetcode.com/problems/two-sum/ ⭐⭐⭐⭐⭐
+2. https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/  ⭐⭐⭐⭐⭐
+3. https://leetcode.com/problems/move-zeroes/description/  ⭐⭐⭐⭐⭐
+4. Rotate Array ⭐⭐⭐⭐⭐
+5. Container With Most Water ⭐⭐⭐⭐
+6. Product of Array Except Self ⭐⭐⭐⭐⭐
+7. Next Permutation ⭐⭐⭐⭐
+8. Merge Sorted Array ⭐⭐⭐⭐
+
+==============================
+2. SLIDING WINDOW (5)
+==============================
+9. https://leetcode.com/problems/longest-substring-without-repeating-characters/  ⭐⭐⭐⭐⭐
+10. https://leetcode.com/problems/longest-repeating-character-replacement/description/  ⭐⭐⭐⭐
+11. https://leetcode.com/problems/minimum-size-subarray-sum/description/  ⭐⭐⭐⭐
+12. https://leetcode.com/problems/permutation-in-string/  ⭐⭐⭐
+13. https://leetcode.com/problems/maximum-average-subarray-i/  ⭐⭐⭐
+https://leetcode.com/problems/sliding-window-maximum/description/  TODO
+
+==============================
+3. HASHING (5)
+==============================
+14. Valid Anagram ⭐⭐⭐⭐⭐
+15. Group Anagrams ⭐⭐⭐⭐⭐
+16. Contains Duplicate ⭐⭐⭐⭐
+17. Top K Frequent Elements ⭐⭐⭐⭐
+18. Subarray Sum Equals K ⭐⭐⭐⭐⭐
+
+==============================
+4. TWO POINTERS (4)
+==============================
+19. Valid Palindrome ⭐⭐⭐⭐⭐
+20.https://leetcode.com/problems/3sum/description/  ⭐⭐⭐⭐
+21. Remove Duplicates from Sorted Array ⭐⭐⭐⭐
+22. Squares of a Sorted Array ⭐⭐⭐
+
+==============================
+5. BINARY SEARCH (5)
+==============================
+23. https://leetcode.com/problems/binary-search/description/  ⭐⭐⭐⭐⭐
+24. https://leetcode.com/problems/search-insert-position/  ⭐⭐⭐⭐
+25. https://leetcode.com/problems/search-in-rotated-sorted-array/description/ ⭐⭐⭐⭐
+26. https://leetcode.com/problems/first-bad-version/description/  ⭐⭐⭐
+27. https://leetcode.com/problems/koko-eating-bananas/description/  ⭐⭐⭐⭐
+
+==============================
+6. LINKED LIST (5)
+==============================
+28. https://leetcode.com/problems/reverse-linked-list/ ⭐⭐⭐⭐⭐
+29. https://leetcode.com/problems/linked-list-cycle/  ⭐⭐⭐⭐⭐
+30. Remove Nth Node From End ⭐⭐⭐⭐⭐
+31. Merge Two Sorted Lists ⭐⭐⭐⭐
+32. Middle of Linked List ⭐⭐⭐⭐
+
+==============================
+7. STACK / QUEUE (4)
+==============================
+33. https://leetcode.com/problems/valid-parentheses/description/  ⭐⭐⭐⭐⭐
+34. Min Stack ⭐⭐⭐⭐
+35. Daily Temperatures ⭐⭐⭐⭐
+36. Implement Queue using Stacks ⭐⭐⭐
+
+==============================
+8. HEAP / PRIORITY QUEUE (2)
+==============================
+37. Kth Largest Element in an Array ⭐⭐⭐⭐
+38. Top K Frequent Elements ⭐⭐⭐⭐
+
+==============================
+9. STRINGS (2)
+==============================
+39. Reverse Words in a String ⭐⭐⭐⭐⭐
+40. String to Integer (atoi) ⭐⭐⭐
+
+
+
+
+
+
+==============================
+10. IMPORTANT MEDIUM QUESTIONS (10)
+==============================
+41. LRU Cache ⭐⭐⭐⭐⭐
+42. Merge Intervals ⭐⭐⭐⭐
+43. Insert Interval ⭐⭐⭐
+44. Set Matrix Zeroes ⭐⭐⭐⭐
+45. Spiral Matrix ⭐⭐⭐⭐
+46. Search a 2D Matrix ⭐⭐⭐⭐
+47. Letter Combinations of a Phone Number ⭐⭐⭐
+48. Number of Islands ⭐⭐⭐⭐
+49. Lowest Common Ancestor of BST ⭐⭐⭐
+50. Largest Rectangle in Histogram ⭐⭐⭐⭐
+
+=========================================================
+ABSOLUTE TOP 15 (DO NOT SKIP)
+=========================================================
+
+✓ Two Sum
+✓ Best Time to Buy and Sell Stock
+✓ Move Zeroes
+✓ Product of Array Except Self
+✓ Longest Substring Without Repeating Characters
+✓ Group Anagrams
+✓ Subarray Sum Equals K
+✓ Binary Search
+✓ Reverse Linked List
+✓ Linked List Cycle
+✓ Remove Nth Node From End
+✓ Valid Parentheses
+✓ Kth Largest Element in an Array
+✓ Reverse Words in a String
+✓ LRU Cache
+
+=========================================================
+
