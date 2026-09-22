@@ -33,6 +33,18 @@ Time Complexity: O(n × 2ⁿ)
 - Copying each subset into the result takes O(n).
 - Therefore, total time = O(n × 2ⁿ).
 
+             SUBSETS
+                |
+        ┌───────┴───────┐
+        |               |
+    2 choices       n elements
+        |               |
+       2^n          copying subsets
+                        |
+                       × n
+                        |
+                n × 2^n
+
 Space Complexity:
 
 Auxiliary Space: O(n)
