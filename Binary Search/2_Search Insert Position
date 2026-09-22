@@ -16,3 +16,4 @@ public:
         return l;
     }
 };
+If target is not found, the answer is the position where low finally stops. 
