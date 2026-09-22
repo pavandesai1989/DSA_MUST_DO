@@ -52,3 +52,7 @@ Auxiliary Space: O(n)
 
 Including Output: O(n × 2ⁿ)
 - There are 2ⁿ subsets, each can contain up to n elements.
+
+
+Time complexity is O(n × 2^n), because there are 2^n subsets and copying each subset can take O(n).
+Space complexity is O(n × 2^n) including the result. The auxiliary space is O(n) for the recursion stack.
