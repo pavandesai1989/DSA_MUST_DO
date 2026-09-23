@@ -1,0 +1,83 @@
+***BRUTE FORCE****
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) 
+    {
+        int len=s.length();
+        int maxlen=INT_MIN;
+
+        for(int i=0;i<len;i++)
+        {
+            unordered_map<char,int> freq;
+            for(int j=i;j<len;j++)
+            {
+                freq[s[j]]++;
+                if(freq[s[j]] > 1) break;
+
+                //update len
+                maxlen = max(maxlen,j-i+1);
+            }
+        }
+        return maxlen == INT_MIN ? 0 : maxlen;
+    }
+};
+
+n = length of string
+
+Time:
+Outer loop → O(n)
+Inner loop → O(n)
+Total → O(n²)
+
+Space:
+unordered_map → O(n)
+
+Therefore:
+Time  = O(n²)
+Space = O(n)
+
+****OPTIMAL****
+
+Sliding Window — No Repeating Characters
+
+right → expand window
+left  → shrink when invalid
+
+while window is INVALID:
+    remove s[left]
+    left++
+
+when VALID:
+    update answer
+
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) 
+    {
+        int n=s.length();
+        int l=0,r=0;
+        unordered_map<char,int> freq;
+        int maxlen = 0;
+
+        while(r<n)
+        {
+            //add to freq map
+            freq[s[r]]++;
+
+            while(freq[s[r]] > 1)
+            {
+               freq[s[l]]--;
+               l++;
+            }
+
+            maxlen = max(maxlen,r-l+1);
+
+            r++;
+        }
+        return maxlen;
+    }
+};
+
+Time  : O(n)
+Space : O(n)
