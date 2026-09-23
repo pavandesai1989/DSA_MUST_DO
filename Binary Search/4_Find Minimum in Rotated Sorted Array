@@ -1,3 +1,9 @@
+Memory trick:
+👉 “One candidate left = stop.”
+
+Find an exact TARGET  → while (l <= r)
+Find a POSITION / BOUNDARY → while (l < r)
+
 class Solution {
 public:
     int findMin(vector<int>& nums) 
